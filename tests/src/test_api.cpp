@@ -1,10 +1,12 @@
 #include <gtest/gtest.h>
 
-class ApiTest : public ::testing::Test {
+#include "../../src/api_layer.h"
+
+class ApiLayerTest : public ::testing::Test {
 
 };
 
-TEST(ApiTest, IsGoodTest) {
+TEST(ApiLayerTest, IsGoodTest) {
     EXPECT_STRNE("hello", "world");
     EXPECT_EQ(7*6, 42);
 }
