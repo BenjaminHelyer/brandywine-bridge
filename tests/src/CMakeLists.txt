@@ -12,6 +12,7 @@ enable_testing()
 add_executable(
     test_api
     test_api.cpp
+    ../../src/api_layer.cpp
 )
 target_link_libraries(
     test_api

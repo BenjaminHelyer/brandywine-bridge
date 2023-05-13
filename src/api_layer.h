@@ -2,7 +2,10 @@
 #define API_LAYER_H
 
 namespace brandywine {
-    class ApiLayer;
+    class ApiLayer {
+        public:
+            std::string hello_world_response();
+    };
 }
 
 #endif
