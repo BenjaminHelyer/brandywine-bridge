@@ -2,9 +2,7 @@
 #define API_LAYER_H
 
 namespace brandywine {
-    class ApiLayer {
-
-    };
+    class ApiLayer;
 }
 
 #endif

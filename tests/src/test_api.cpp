@@ -1,12 +1,12 @@
 #include <gtest/gtest.h>
+#include "../../external/httplib.h"
 
 #include "../../src/api_layer.h"
 
 class ApiLayerTest : public ::testing::Test {
-
+    
 };
 
-TEST(ApiLayerTest, IsGoodTest) {
-    EXPECT_STRNE("hello", "world");
-    EXPECT_EQ(7*6, 42);
+TEST(ApiLayerTest, IsHelloResponseGood) {
+    httplib::Client cli("localhost", 8080);
 }
