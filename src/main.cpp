@@ -1,6 +1,7 @@
 #include "../external/httplib.h"
 
 #include "api_layer.h"
+#include <iostream>
 
 int main(void)
 {

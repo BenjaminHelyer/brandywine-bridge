@@ -1,6 +1,8 @@
 #ifndef API_LAYER_H
 #define API_LAYER_H
 
+#include <string>
+
 namespace brandywine {
     class ApiLayer {
         public:
