@@ -9,23 +9,23 @@
 
 class ApiLayerTest : public ::testing::Test {
     protected:
-        // ApiLayerTest() = default;
+        ApiLayerTest() = default;
 
         void SetUp() override {
-            brandywine::HashTable mockHashTable;
-            // std::shared_ptr<brandywine::KeyValueStore> mockKeyVal = std::make_shared<brandywine::HashTable>(mockHashTable);
-            // uutApiLayer = brandywine::ApiLayer(mockKeyVal);
+            // TODO: load some initial keys in the hash table for tests
         }
-    
-        // brandywine::ApiLayer uutApiLayer;
+
+        brandywine::HashTable mockHashTable;
+        std::shared_ptr<brandywine::KeyValueStore> mockKeyVal = std::make_shared<brandywine::HashTable>(mockHashTable);
+        brandywine::ApiLayer uutApiLayer = brandywine::ApiLayer(mockKeyVal);
 };
 
 /*
 Sanity check for a "Hello, World!" response.
 */
 TEST_F(ApiLayerTest, IsHelloResponseGood) {
-    // std::string resp = uutApiLayer.hello_world_response();
-    // EXPECT_EQ("Hello, World!", resp);
+    std::string resp = uutApiLayer.hello_world_response();
+    EXPECT_EQ("Hello, World!", resp);
 }
 
 // /*
