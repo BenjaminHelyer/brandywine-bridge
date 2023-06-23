@@ -8,6 +8,7 @@ namespace brandywine {
 
         public:
             virtual std::string read_key(std::string key) = 0;
+            
             virtual void write_key(std::string key, std::string val) = 0;
 
     };

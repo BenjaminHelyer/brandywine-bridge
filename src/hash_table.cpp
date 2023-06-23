@@ -1,6 +1,8 @@
 #include <string>
+#include <unordered_map>
 
 #include "hash_table.h"
+#include "key_value_store.h"
 
 namespace brandywine {
     std::string HashTable::read_key(const std::string key) {
