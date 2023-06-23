@@ -9,6 +9,8 @@ FetchContent_MakeAvailable(googletest)
 
 enable_testing()
 
+target_link_libraries(Api_layer Hash_table Key_value_store)
+
 add_executable(
     test_api
     test_api.cpp

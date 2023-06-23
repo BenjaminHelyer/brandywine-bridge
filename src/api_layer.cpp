@@ -29,4 +29,4 @@ namespace brandywine {
         return ack_txt;
     }
     
-}
+} // namespace brandywine
