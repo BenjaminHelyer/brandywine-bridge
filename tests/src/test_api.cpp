@@ -30,28 +30,32 @@ content, but we want to ensure that the content
 makes sense.
 */
 TEST_F(ApiLayerTest, IsCreateRequestAcknowledged) {
-
+    std::string resp = uutApiLayer.create_key("test", "val");
+    EXPECT_EQ("Create request received.", resp);
 }
 
 /*
 Similar to the test for create, but this time for read.
 */
 TEST_F(ApiLayerTest, IsReadRequestAcknowledged) {
-
+    std::string resp = uutApiLayer.read_key("test");
+    EXPECT_EQ("Read request received.", resp);
 }
 
 /*
 Similar to the test for create, but this time for update.
 */
 TEST_F(ApiLayerTest, IsUpdateRequestAcknowledged) {
-
+    std::string resp = uutApiLayer.update_key("test", "val");
+    EXPECT_EQ("Update request received.", resp);
 }
 
 /*
 Similar to test for create, but this time for delete.
 */
 TEST_F(ApiLayerTest, IsDeleteRequestAcknowledged) {
-
+    std::string resp = uutApiLayer.delete_key("test");
+    EXPECT_EQ("Delete request received.", resp);
 }
 
 /*
