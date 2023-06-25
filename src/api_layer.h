@@ -7,6 +7,12 @@
 #include "key_value_store.h"
 
 namespace brandywine {
+    /*
+    * Class for a layer that supports the basic CRUD operations.
+    * Allows us to abstract the interface of the store to the client
+    * from the implementation. Requests should generally go through
+    * the ApiLayer and not touch the store directly.
+    */
     class ApiLayer {
         private:
             std::shared_ptr<KeyValueStore> store;
