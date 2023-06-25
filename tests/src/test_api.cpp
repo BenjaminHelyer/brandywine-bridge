@@ -107,28 +107,6 @@ TEST_F(ApiLayerTest, IsDeleteSuccessful) {
 }
 
 /*
-With the mock table and log sleeping to simulate
-a real database lookup, we see whether the ApiLayer
-can handle such requests and does not drop any.
-*/
-TEST_F(ApiLayerTest, ParallelRequestsNotDropped) {
-
-}
-
-/*
-Test to see if the ApiLayer actually handles the
-requests in parallel. In this case, we'll set the
-mock hash table and/or log to sleep for a long time
-on some keys and a short time on others, and see
-if the ApiLayer returns the requests with the shorter
-wait times more quickly than the requests for the 
-longer wait times.
-*/
-TEST_F(ApiLayerTest, ParallelRequestActuallyParallel) {
-
-}
-
-/*
 Tests that the ApiLayer remains stable upon not
 finding a key in the database.
 */
