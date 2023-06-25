@@ -17,6 +17,8 @@ namespace brandywine {
 
             void write_key(const std::string key, const std::string value) override;
 
+            bool has_key(const std::string key);
+
     };
 
 } // namespace brandywine

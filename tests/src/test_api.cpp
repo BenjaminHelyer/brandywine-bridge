@@ -15,8 +15,8 @@ class ApiLayerTest : public ::testing::Test {
             // TODO: load some initial keys in the hash table for tests
         }
 
-        brandywine::HashTable mockHashTable;
-        std::shared_ptr<brandywine::KeyValueStore> mockKeyVal = std::make_shared<brandywine::HashTable>(mockHashTable);
+        brandywine::HashTable exampleHashTable;
+        std::shared_ptr<brandywine::KeyValueStore> mockKeyVal = std::make_shared<brandywine::HashTable>(exampleHashTable);
         brandywine::ApiLayer uutApiLayer = brandywine::ApiLayer(mockKeyVal);
 };
 
@@ -76,7 +76,9 @@ i.e., we care about what the hash table and/or log
 look like afterwards.
 */
 TEST_F(ApiLayerTest, IsCreateSuccessful) {
-
+    std::string resp = uutApiLayer.create_key("key1", "val1");
+    std::string received_val = mockKeyVal->read_key("key1");
+    EXPECT_EQ("val1", received_val);
 }
 
 /*
