@@ -47,7 +47,7 @@ Similar to the test for create, but this time for read.
 */
 TEST_F(ApiLayerTest, IsReadRequestAcknowledged) {
     std::string resp = uutApiLayer.read_key("test");
-    EXPECT_EQ("Read request received.", resp);
+    EXPECT_EQ("Read request received. Value is: ", resp);
 }
 
 /*
@@ -88,7 +88,9 @@ about what the content returned looks like given
 a known state of the hash table and/or log.
 */
 TEST_F(ApiLayerTest, IsReadSuccessful) {
-
+    std::string createdResp = uutApiLayer.create_key("key2", "val2");
+    std::string resp = uutApiLayer.read_key("key2");
+    EXPECT_EQ("Read request received. Value is: val2", resp);
 }
 
 /*
