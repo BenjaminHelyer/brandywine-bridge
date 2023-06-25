@@ -18,7 +18,12 @@ namespace brandywine {
     std::string ApiLayer::read_key(std::string key) {
         std::string ack_txt = "Read request received.";
         std::string val = store->read_key(key);
-        return ack_txt + " Value is: " + val;
+        if (val != "") {
+            return ack_txt + " Value is: " + val;
+        }
+        else {
+            return ack_txt + " Value not found in store.";
+        }
     }
 
     std::string ApiLayer::update_key(std::string key, std::string val) {

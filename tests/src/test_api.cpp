@@ -12,7 +12,7 @@ class ApiLayerTest : public ::testing::Test {
         ApiLayerTest() = default;
 
         void SetUp() override {
-            // TODO: load some initial keys in the hash table for tests
+            mockKeyVal->write_key("test_key", "test_val");
         }
 
         brandywine::HashTable exampleHashTable;
@@ -47,7 +47,7 @@ Similar to the test for create, but this time for read.
 */
 TEST_F(ApiLayerTest, IsReadRequestAcknowledged) {
     std::string resp = uutApiLayer.read_key("test");
-    EXPECT_EQ("Read request received. Value is: ", resp);
+    EXPECT_EQ("Read request received. Value not found in store.", resp);
 }
 
 /*
@@ -88,9 +88,10 @@ about what the content returned looks like given
 a known state of the hash table and/or log.
 */
 TEST_F(ApiLayerTest, IsReadSuccessful) {
-    std::string createdResp = uutApiLayer.create_key("key2", "val2");
-    std::string resp = uutApiLayer.read_key("key2");
-    EXPECT_EQ("Read request received. Value is: val2", resp);
+    std::string resp_found_2 = uutApiLayer.read_key("test_key");
+    EXPECT_EQ("Read request received. Value is: test_val", resp_found_2);
+    std::string resp_not_found = uutApiLayer.read_key("Nonexistent key");
+    EXPECT_EQ("Read request received. Value not found in store.", resp_not_found);
 }
 
 /*
