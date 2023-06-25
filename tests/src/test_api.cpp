@@ -88,15 +88,20 @@ about what the content returned looks like given
 a known state of the hash table and/or log.
 */
 TEST_F(ApiLayerTest, IsReadSuccessful) {
-    std::string resp_found_2 = uutApiLayer.read_key("test_key");
-    EXPECT_EQ("Read request received. Value is: test_val", resp_found_2);
+    std::string resp_found = uutApiLayer.read_key("test_key");
+    EXPECT_EQ("Read request received. Value is: test_val", resp_found);
 }
 
 /*
 Similar to test for create, but this time for update.
 */
 TEST_F(ApiLayerTest, IsUpdateSuccessful) {
-
+    std::string resp_update_1 = uutApiLayer.update_key("test_key", "new_val");
+    std::string received_val_1 = mockKeyVal->read_key("test_key");
+    EXPECT_EQ("new_val", received_val_1);
+    std::string resp_update_2 = uutApiLayer.update_key("test_key", "another_val");
+    std::string received_val_2 = mockKeyVal->read_key("test_key");
+    EXPECT_EQ("another_val", received_val_2);
 }
 
 /*

@@ -28,6 +28,7 @@ namespace brandywine {
 
     std::string ApiLayer::update_key(std::string key, std::string val) {
         std::string ack_txt = "Update request received.";
+        store->write_key(key, val);
         return ack_txt;
     }
 
