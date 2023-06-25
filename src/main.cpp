@@ -33,5 +33,18 @@ int main(void)
         res.set_content(confirmation, "text/plain");
     });
 
+    svr.Get(R"(/update/([^/]+)/([^/]+))", [&svrApiLayer](const httplib::Request& req, httplib::Response& res) {
+        auto key = req.matches[1];
+        auto val = req.matches[2];
+        std::string confirmation = svrApiLayer.update_key(key, val);
+        res.set_content(confirmation, "text/plain");
+    });
+
+    svr.Get(R"(/delete/([^/]+))", [&svrApiLayer](const httplib::Request& req, httplib::Response& res) {
+        auto key = req.matches[1];
+        std::string confirmation = svrApiLayer.delete_key(key);
+        res.set_content(confirmation, "text/plain");
+    });
+
     svr.listen("localhost", 8080);
 }
