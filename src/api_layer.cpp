@@ -34,6 +34,7 @@ namespace brandywine {
 
     std::string ApiLayer::delete_key(std::string key) {
         std::string ack_txt = "Delete request received.";
+        store->remove_key(key);
         return ack_txt;
     }
     

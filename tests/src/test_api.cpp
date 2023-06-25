@@ -108,7 +108,9 @@ TEST_F(ApiLayerTest, IsUpdateSuccessful) {
 Similar to test for create, but this time for delete.
 */
 TEST_F(ApiLayerTest, IsDeleteSuccessful) {
-
+    std::string del_update = uutApiLayer.delete_key("test_key");
+    std::string received_val = mockKeyVal->read_key("test_key");
+    EXPECT_EQ("", received_val);
 }
 
 /*

@@ -29,4 +29,8 @@ namespace brandywine {
         }
     }
 
+    void HashTable::remove_key(const std::string key) {
+        data.erase(key);
+    }
+
 } // namespace brandywine
