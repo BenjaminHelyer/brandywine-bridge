@@ -90,18 +90,6 @@ a known state of the hash table and/or log.
 TEST_F(ApiLayerTest, IsReadSuccessful) {
     std::string resp_found_2 = uutApiLayer.read_key("test_key");
     EXPECT_EQ("Read request received. Value is: test_val", resp_found_2);
-    std::string resp_not_found = uutApiLayer.read_key("Nonexistent key");
-    EXPECT_EQ("Read request received. Value not found in store.", resp_not_found);
-}
-
-/*
-We check the hash table and/or log look like
-after a read, ensuring it has no side effects.
-I.e., we want the key-value entries to remain
-entirely the same after a read request.
-*/
-TEST_F(ApiLayerTest, ReadHasNoSideEffects) {
-
 }
 
 /*
@@ -141,9 +129,10 @@ TEST_F(ApiLayerTest, ParallelRequestActuallyParallel) {
 }
 
 /*
-Tests that the ApiLayer remains stable upon receiving
-no data or bad data from the database.
+Tests that the ApiLayer remains stable upon not
+finding a key in the database.
 */
-TEST_F(ApiLayerTest, IsStableUponBadDatabaseRead) {
-
+TEST_F(ApiLayerTest, IsStableUponKeyNotFound) {
+    std::string resp_not_found = uutApiLayer.read_key("Nonexistent key");
+    EXPECT_EQ("Read request received. Value not found in store.", resp_not_found);
 }
