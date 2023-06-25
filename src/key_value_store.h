@@ -4,6 +4,12 @@
 #include <string>
 
 namespace brandywine {
+    
+    /*
+    * Abstract base class for the key value store.
+    * We assume that our store will at least support
+    * these three operations: read, write, and remove.
+    */
     class KeyValueStore {
 
         public:
