@@ -8,7 +8,8 @@ namespace brandywine {
     class BenRedBlackNode {
         public:
             BenRedBlackNode(std::string color, 
-                            int key, std::string val, 
+                            int key, 
+                            std::string val, 
                             BenRedBlackNode* parent, 
                             BenRedBlackNode* left_child, 
                             BenRedBlackNode* right_child) :
@@ -18,7 +19,7 @@ namespace brandywine {
                             left_child(left_child),
                             right_child(right_child)
                             {}
-                            
+
             std::string color;
             int key;
             std::string val;
