@@ -13,6 +13,9 @@ add_executable(
     test_api
     test_api.cpp
     ../../src/api_layer.cpp
+    test_ben_red_black_tree
+    test_ben_red_black_tree.cpp
+    ../../src/ben_red_black_tree.cpp
 )
 target_link_libraries(
     test_api

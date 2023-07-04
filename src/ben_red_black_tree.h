@@ -1,6 +1,7 @@
 #ifndef BEN_RED_BLACK_TREE_H
 #define BEN_RED_BLACK_TREE_H
 
+#include "ben_red_black_node.h"
 #include "key_value_store.h"
 
 #include <string>
@@ -9,7 +10,7 @@ namespace brandywine {
 
     class BenRedBlackTree : public KeyValueStore {
         private:
-            // instantiate a root node of class BenRedBlackNode
+            BenRedBlackNode* root;
 
         public:
             std::string read_key(const std::string key) override;
