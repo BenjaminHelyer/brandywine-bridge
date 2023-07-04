@@ -6,21 +6,22 @@
 #include <string>
 #include <unordered_map>
 
-namespace brandywine {
+namespace brandywine
+{
 
-    class HashTable : public KeyValueStore {
-        private:
-            std::unordered_map<std::string, std::string> data;
+    class HashTable : public KeyValueStore
+    {
+    private:
+        std::unordered_map<std::string, std::string> data;
 
-        public:
-            std::string read_key(const std::string key) override;
+    public:
+        std::string read_key(const std::string key) override;
 
-            void write_key(const std::string key, const std::string value) override;
+        void write_key(const std::string key, const std::string value) override;
 
-            void remove_key(const std::string key);
+        void remove_key(const std::string key);
 
-            bool has_key(const std::string key);
-
+        bool has_key(const std::string key);
     };
 
 } // namespace brandywine

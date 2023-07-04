@@ -6,17 +6,18 @@
 
 #include <string>
 
-namespace brandywine {
+namespace brandywine
+{
 
-    class BenRedBlackTree : public KeyValueStore {
-        private:
-            BenRedBlackNode* root;
+    class BenRedBlackTree : public KeyValueStore
+    {
+    private:
+        BenRedBlackNode *root;
 
-        public:
-            std::string read_key(const std::string key) override;
+    public:
+        std::string read_key(const std::string key) override;
 
-            void write_key(const std::string key, const std::string val) override;
-
+        void write_key(const std::string key, const std::string val) override;
     };
 
 } // namespace brandywine

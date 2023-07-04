@@ -7,23 +7,26 @@
 
 #include <memory>
 
-class ApiLayerTest : public ::testing::Test {
-    protected:
-        ApiLayerTest() = default;
+class ApiLayerTest : public ::testing::Test
+{
+protected:
+    ApiLayerTest() = default;
 
-        void SetUp() override {
-            mockKeyVal->write_key("test_key", "test_val");
-        }
+    void SetUp() override
+    {
+        mockKeyVal->write_key("test_key", "test_val");
+    }
 
-        brandywine::HashTable exampleHashTable;
-        std::shared_ptr<brandywine::KeyValueStore> mockKeyVal = std::make_shared<brandywine::HashTable>(exampleHashTable);
-        brandywine::ApiLayer uutApiLayer = brandywine::ApiLayer(mockKeyVal);
+    brandywine::HashTable exampleHashTable;
+    std::shared_ptr<brandywine::KeyValueStore> mockKeyVal = std::make_shared<brandywine::HashTable>(exampleHashTable);
+    brandywine::ApiLayer uutApiLayer = brandywine::ApiLayer(mockKeyVal);
 };
 
 /*
 Sanity check for a "Hello, World!" response.
 */
-TEST_F(ApiLayerTest, IsHelloResponseGood) {
+TEST_F(ApiLayerTest, IsHelloResponseGood)
+{
     std::string resp = uutApiLayer.hello_world_response();
     EXPECT_EQ("Hello, World!", resp);
 }
@@ -37,7 +40,8 @@ We don't care about the exact details of the
 content, but we want to ensure that the content
 makes sense.
 */
-TEST_F(ApiLayerTest, IsCreateRequestAcknowledged) {
+TEST_F(ApiLayerTest, IsCreateRequestAcknowledged)
+{
     std::string resp = uutApiLayer.create_key("test", "val");
     EXPECT_EQ("Create request received.", resp);
 }
@@ -45,7 +49,8 @@ TEST_F(ApiLayerTest, IsCreateRequestAcknowledged) {
 /*
 Similar to the test for create, but this time for read.
 */
-TEST_F(ApiLayerTest, IsReadRequestAcknowledged) {
+TEST_F(ApiLayerTest, IsReadRequestAcknowledged)
+{
     std::string resp = uutApiLayer.read_key("test");
     EXPECT_EQ("Read request received. Value not found in store.", resp);
 }
@@ -53,7 +58,8 @@ TEST_F(ApiLayerTest, IsReadRequestAcknowledged) {
 /*
 Similar to the test for create, but this time for update.
 */
-TEST_F(ApiLayerTest, IsUpdateRequestAcknowledged) {
+TEST_F(ApiLayerTest, IsUpdateRequestAcknowledged)
+{
     std::string resp = uutApiLayer.update_key("test", "val");
     EXPECT_EQ("Update request received.", resp);
 }
@@ -61,7 +67,8 @@ TEST_F(ApiLayerTest, IsUpdateRequestAcknowledged) {
 /*
 Similar to test for create, but this time for delete.
 */
-TEST_F(ApiLayerTest, IsDeleteRequestAcknowledged) {
+TEST_F(ApiLayerTest, IsDeleteRequestAcknowledged)
+{
     std::string resp = uutApiLayer.delete_key("test");
     EXPECT_EQ("Delete request received.", resp);
 }
@@ -75,7 +82,8 @@ In this case, we do care about the specific details,
 i.e., we care about what the hash table and/or log
 look like afterwards.
 */
-TEST_F(ApiLayerTest, IsCreateSuccessful) {
+TEST_F(ApiLayerTest, IsCreateSuccessful)
+{
     std::string resp = uutApiLayer.create_key("key1", "val1");
     std::string received_val = mockKeyVal->read_key("key1");
     EXPECT_EQ("val1", received_val);
@@ -87,7 +95,8 @@ table and/or log looks afterwards, but we do care
 about what the content returned looks like given
 a known state of the hash table and/or log.
 */
-TEST_F(ApiLayerTest, IsReadSuccessful) {
+TEST_F(ApiLayerTest, IsReadSuccessful)
+{
     std::string resp_found = uutApiLayer.read_key("test_key");
     EXPECT_EQ("Read request received. Value is: test_val", resp_found);
 }
@@ -95,7 +104,8 @@ TEST_F(ApiLayerTest, IsReadSuccessful) {
 /*
 Similar to test for create, but this time for update.
 */
-TEST_F(ApiLayerTest, IsUpdateSuccessful) {
+TEST_F(ApiLayerTest, IsUpdateSuccessful)
+{
     std::string resp_update_1 = uutApiLayer.update_key("test_key", "new_val");
     std::string received_val_1 = mockKeyVal->read_key("test_key");
     EXPECT_EQ("new_val", received_val_1);
@@ -107,7 +117,8 @@ TEST_F(ApiLayerTest, IsUpdateSuccessful) {
 /*
 Similar to test for create, but this time for delete.
 */
-TEST_F(ApiLayerTest, IsDeleteSuccessful) {
+TEST_F(ApiLayerTest, IsDeleteSuccessful)
+{
     std::string del_update = uutApiLayer.delete_key("test_key");
     std::string received_val = mockKeyVal->read_key("test_key");
     EXPECT_EQ("", received_val);
@@ -117,7 +128,8 @@ TEST_F(ApiLayerTest, IsDeleteSuccessful) {
 Tests that the ApiLayer remains stable upon not
 finding a key in the database.
 */
-TEST_F(ApiLayerTest, IsStableUponKeyNotFound) {
+TEST_F(ApiLayerTest, IsStableUponKeyNotFound)
+{
     std::string resp_not_found = uutApiLayer.read_key("Nonexistent key");
     EXPECT_EQ("Read request received. Value not found in store.", resp_not_found);
 }
