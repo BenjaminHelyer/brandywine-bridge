@@ -34,7 +34,6 @@
 # Directories
 build/
 .vscode/
-external/
 
 # CMake files
 .cmake
