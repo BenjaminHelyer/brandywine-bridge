@@ -9,4 +9,4 @@ as shown below in the figure.
 To create these resources using the AWS CLI, use the template "cf_brandywine.yaml"
 and run the following command: 
 
-```aws cloudformation create-stack --stack-name ec2-example --template-body file://cf_brandywine.yaml --capabilities CAPABILITY_IAM```
+```aws cloudformation create-stack --stack-name brandywine-server --template-body file://cf_brandywine.yaml --capabilities CAPABILITY_IAM```
