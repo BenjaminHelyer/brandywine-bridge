@@ -1,0 +1,32 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Deploy our Brandywine server to an EC2 instance using AWS CloudFormation.
+
+Resources:
+  BrandywineServerInstance:
+    Type: AWS::EC2::Instance
+    Properties:
+      ImageId: ami-0d5eff06f840b45e9 # ImageID valid only in us-east-1 region
+      InstanceType: t2.micro
+      KeyName: brandywine-key-pair
+      SecurityGroups:
+        - !Ref BrandywineSecurityGroup
+
+  BrandywineSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupName: !Join ["-", [brandywine-security-group, dev]]
+      GroupDescription: "Allow HTTP/HTTPS and SSH inbound and outbound traffic"
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 80
+          ToPort: 80
+          CidrIp: 0.0.0.0/0
+        - IpProtocol: tcp
+          FromPort: 443
+          ToPort: 443
+          CidrIp: 0.0.0.0/0
+        - IpProtocol: tcp
+          FromPort: 22
+          ToPort: 22
+          CidrIp: 0.0.0.0/0
+  
