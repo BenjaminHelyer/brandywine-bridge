@@ -10,9 +10,11 @@ namespace brandywine
     {
     private:
         int eof_byte_offset;
-        std::string filepath;
+        std::string path;
 
     public:
+        FileReader(std::string filepath) : path(filepath) {};
+
         std::string read_value(int byte_offset);
 
         void write_value(std::string val);
