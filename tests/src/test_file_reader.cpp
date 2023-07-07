@@ -1,5 +1,7 @@
 #include <gtest/gtest.h>
 
+#include "../../src/file_reader.h"
+
 class FileReaderTest : public ::testing::Test
 {
 protected:
