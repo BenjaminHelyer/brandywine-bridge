@@ -9,15 +9,15 @@ namespace brandywine
     class FileReader
     {
     private:
-        int eof_byte_offset;
         std::string path;
+        int eof_offset;
 
     public:
-        FileReader(std::string filepath) : path(filepath) {};
+        explicit FileReader(std::string filepath) : eof_offset(0), path(std::move(filepath)) {}
 
         std::string read_value(int byte_offset);
 
-        void write_value(std::string val);
+        int write_value(std::string val);
     };
 
 }
